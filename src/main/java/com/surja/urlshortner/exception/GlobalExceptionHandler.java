@@ -1,0 +1,24 @@
+package com.surja.urlshortner.exception;
+
+import com.surja.urlshortner.payload.ApiResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiResponse> illegalArgumentExceptionHandler(IllegalArgumentException e) {
+        String message = e.getMessage();
+        ApiResponse apiResponse = new ApiResponse("URL Not Found", false, 400);
+        return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ApiResponse> apiExceptionHandler(RuntimeException e) {
+        String message = e.getMessage();
+        ApiResponse apiResponse = new ApiResponse(message,true,400);
+        return new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.BAD_REQUEST);
+    }
+}
