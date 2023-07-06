@@ -30,6 +30,9 @@ jobs:
     - name: Build with Maven
       env:
         JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        DB_COLLECTION: ${{ secrets.DB_COLLECTION }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
       run: mvn clean install
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
