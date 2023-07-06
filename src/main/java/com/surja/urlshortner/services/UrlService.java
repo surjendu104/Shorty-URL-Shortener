@@ -1,6 +1,5 @@
 package com.surja.urlshortner.services;
 
-import com.surja.urlshortner.exception.ApiErrorException;
 import com.surja.urlshortner.payload.UrlDto;
 import jakarta.servlet.http.HttpServletRequest;
 

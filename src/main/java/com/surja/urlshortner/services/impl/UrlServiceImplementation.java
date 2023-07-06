@@ -3,7 +3,6 @@ package com.surja.urlshortner.services.impl;
 import com.google.common.hash.Hashing;
 import com.surja.urlshortner.model.DbSequence;
 import com.surja.urlshortner.model.Url;
-import com.surja.urlshortner.model.User;
 import com.surja.urlshortner.payload.UrlDto;
 import com.surja.urlshortner.repository.UrlRepository;
 import com.surja.urlshortner.repository.UserRepository;
@@ -12,6 +11,7 @@ import com.surja.urlshortner.services.UrlService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -20,7 +20,10 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
+import java.util.Set;
 
 import static com.surja.urlshortner.model.Url.SEQUENCE_NAME;
 import static org.springframework.data.mongodb.core.FindAndModifyOptions.options;
@@ -28,7 +31,8 @@ import static org.springframework.data.mongodb.core.FindAndModifyOptions.options
 @Service
 public class UrlServiceImplementation implements UrlService {
     private char[] myChars;
-    private int keyLength = 8;
+    @Value("${SHORT_URL_KEY_LENGTH}")
+    private int keyLength;
 
     @Autowired
     private MongoOperations mongoOperations;
@@ -138,7 +142,7 @@ public class UrlServiceImplementation implements UrlService {
         boolean flag = true;
         while(flag) {
             key = "";
-            for(int i = 0; i <= keyLength; ++i) {
+            for(int i = 0; i < keyLength; ++i) {
                 key+=myChars[new Random().nextInt(62)];
             }
             if(!findKeyInDb(key)) {
