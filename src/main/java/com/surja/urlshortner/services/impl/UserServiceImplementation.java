@@ -16,6 +16,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,6 +56,7 @@ public class UserServiceImplementation implements UserService {
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        if(userDto.getRoles().isEmpty())user.setRoles(new ArrayList<String>(){{add("NORMAL");}});
 
         User user1 = findValueByKeyInDB("email", userDto.getEmail());
         if(user1 != null) {

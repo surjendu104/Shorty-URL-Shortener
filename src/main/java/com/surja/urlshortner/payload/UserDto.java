@@ -17,5 +17,6 @@ public class UserDto {
     private String name;
     private String email;
     private String password;
+    private List<String> roles;
     private Set<UrlDto> urls = new HashSet<>();
 }
