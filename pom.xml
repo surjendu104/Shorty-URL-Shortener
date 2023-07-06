@@ -99,7 +99,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>url-shortener-jar</finalName>
+        <finalName>url-shortener-images</finalName>
     </build>
 
 </project>
