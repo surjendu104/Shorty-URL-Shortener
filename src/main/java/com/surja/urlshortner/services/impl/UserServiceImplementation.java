@@ -56,7 +56,7 @@ public class UserServiceImplementation implements UserService {
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        if(userDto.getRoles().isEmpty())user.setRoles(new ArrayList<String>(){{add("NORMAL");}});
+        user.setRoles(new ArrayList<String>(){{add("NORMAL");}});
 
         User user1 = findValueByKeyInDB("email", userDto.getEmail());
         if(user1 != null) {
