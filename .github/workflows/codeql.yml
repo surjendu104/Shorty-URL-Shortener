@@ -60,11 +60,6 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
       #uses: github/codeql-action/autobuild@v2
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
       env:
         JWT_SECRET: ${{ secrets.JWT_SECRET }}
         DB_COLLECTION: ${{ secrets.DB_COLLECTION }}
