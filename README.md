@@ -4,9 +4,9 @@ Here are some functionality of the app
 1. This app is created in Java Springboot.
 2. This app takes long url and return short url which you can easily fire on web and go to the long url.
 3. It uses role based authentication.
-4. For authencation it uses email and password which you have used while signing up.
+4. For authentication it uses email and password which you have used while signing up.
 5. JWT Token is used for authentication.
-6. One cool thing  --> you can cuatomize the length of short url key langth.
+6. One cool thing  --> you can customize the length of short url key length.
 
 Here is the sample authentication api call diagram !!
 
@@ -111,7 +111,7 @@ http://localhost:8080/auth/login
 <td>
 
 ```
-Bad Creantials !!
+Bad Credentials !!
 ```
 </td>
 </tr>
@@ -238,4 +238,4 @@ Authorization : Bearer <JWT Token>
 
 
 ### Fell free to raise any issue and pr !!
-## Thats it :)
+## That's it :)
