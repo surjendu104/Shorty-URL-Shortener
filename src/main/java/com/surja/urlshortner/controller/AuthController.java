@@ -1,12 +1,12 @@
 package com.surja.urlshortner.controller;
 
+import com.surja.urlshortner.payload.ApiResponse;
 import com.surja.urlshortner.payload.UserDto;
 import com.surja.urlshortner.security.JwtHelper;
 import com.surja.urlshortner.security.JwtRequest;
 import com.surja.urlshortner.security.JwtResponse;
 import com.surja.urlshortner.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,6 +28,7 @@ public class AuthController {
     @Autowired
     private JwtHelper helper;
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) {
         this.doAuthenticate(request.getEmail(), request.getPassword());
@@ -55,10 +56,13 @@ public class AuthController {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    public String exceptionHandler() {
-        return "Credentials Invalid !!";
+    public ResponseEntity<ApiResponse> exceptionHandler(BadCredentialsException e) {
+        String message = e.getMessage();
+        ApiResponse apiResponse = new ApiResponse(message,true,400);
+        return new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.BAD_REQUEST);
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody UserDto userDto) {
         UserDto newUser = this.userService.createUser(userDto);

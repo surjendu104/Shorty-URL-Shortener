@@ -49,11 +49,12 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://127.0.0.1:5500"); // Add your desired origin(s)
+        corsConfiguration.addAllowedOrigin("http://localhost:3000"); // Add your desired origin(s)
         corsConfiguration.addAllowedMethod("GET"); // Add the HTTP methods you want to allow
         corsConfiguration.addAllowedMethod("POST");
         corsConfiguration.addAllowedMethod("PUT");
         corsConfiguration.addAllowedMethod("DELETE");
+        corsConfiguration.addAllowedMethod("OPTIONS");
         corsConfiguration.addAllowedHeader("*"); // Add any custom headers you want to allow
         corsConfiguration.setAllowCredentials(true); // If you need to support cookies or authentication headers
         corsConfiguration.setMaxAge(3600L); // The maximum time (in seconds) the CORS configuration is cached by the browser
