@@ -27,7 +27,6 @@ public class SecurityConfig {
     private UserDetailsService userDetailsService;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http

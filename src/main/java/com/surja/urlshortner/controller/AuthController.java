@@ -54,7 +54,6 @@ public class AuthController {
         }
 
     }
-
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ApiResponse> exceptionHandler(BadCredentialsException e) {
         String message = e.getMessage();
