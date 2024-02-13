@@ -14,8 +14,6 @@ RUN apt-get update && \
     apt-get install -y openjdk-11-jre
 
 
-RUN service mongodb start
-RUN sleep 5
 EXPOSE 27017 8080
 ADD target/url-shortener-images.jar url-shortener-images.jar
 ENTRYPOINT ["mongod", "--fork", "--logpath", "/var/log/mongodb/mongod.log", "&&", "java", "-jar", "/url-shortener-images.jar"]
