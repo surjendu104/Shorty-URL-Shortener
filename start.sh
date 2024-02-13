@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start MongoDB
-mongod --fork --logpath /var/log/mongodb/mongod.log
+mongod --logpath /var/log/mongodb/mongod.log
 
 # Wait for MongoDB to start (adjust the sleep duration as needed)
 sleep 5
