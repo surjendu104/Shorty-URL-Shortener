@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get install -y mongodb-org
 
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jre
+    apt-get install -y openjdk-17-jre
 
 
 EXPOSE 27017 8080
