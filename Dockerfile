@@ -16,4 +16,4 @@ RUN apt-get update && \
 
 EXPOSE 27017 8080
 ADD target/url-shortener-images.jar url-shortener-images.jar
-ENTRYPOINT ["mongod", "--fork", "--logpath", "/var/log/mongodb/mongod.log", "&&", "java", "-jar", "/url-shortener-images.jar"]
+ENTRYPOINT ["mongod", "--fork", "--logpath", "/var/log/mongodb/mongod.log", ";", "java", "-jar", "/url-shortener-images.jar"]
