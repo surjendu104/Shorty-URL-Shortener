@@ -16,6 +16,7 @@ RUN apt-get update && \
 
 EXPOSE 27017 8080
 ADD target/url-shortener-images.jar url-shortener-images.jar
-RUN apt-get update && apt-get install -y supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+CMD ["/start.sh"]
