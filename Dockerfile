@@ -15,7 +15,12 @@ RUN apt-get update && \
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y openjdk-11-jre
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jre
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN service mongodb start
 RUN sleep 5
 EXPOSE 8080
